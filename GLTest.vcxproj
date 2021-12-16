@@ -78,8 +78,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <LibraryPath>C:\Users\msi\Desktop\GLTest\GLLib;$(LibraryPath)</LibraryPath>
-    <IncludePath>C:\Users\msi\Desktop\GLTest\GLinclude;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\project\OpenGLGame\GLTest\GLLib;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\project\OpenGLGame\GLTest\GLInclude;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
