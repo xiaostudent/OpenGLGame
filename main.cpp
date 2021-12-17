@@ -9,6 +9,7 @@
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
+#include <iostream>
 
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
@@ -23,6 +24,12 @@ void processInput(GLFWwindow* window)
 }
 
 void initShaderProgram() {
+
+}
+
+void render() {
+    glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
 
 }
 
@@ -51,19 +58,22 @@ int main() {
 
     initShaderProgram();
 
-   // Assimp::Importer importer;
-   // const aiScene* scene = importer.ReadFile("resources/objects/backpack/backpack.obj", aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
+    Assimp::Importer importer;
+    const aiScene* scene = importer.ReadFile("resources/objects/backpack/backpack.obj", aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
+    if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
+    {
+        std::cout << "ERROR::ASSIMP::" << importer.GetErrorString() << std::endl;
+        return -1;
+    }
 
     while (!glfwWindowShouldClose(window))
     {
         processInput(window);
-
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
-
+        render();
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
+
     glfwTerminate();
     return 0;
 }
