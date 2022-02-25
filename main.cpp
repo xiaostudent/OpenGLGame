@@ -10,7 +10,11 @@
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 #include <iostream>
+#include "src/base/FileUtil.h"
+#include <windows.h>
+#include "src/base/GLProgram.h"
 
+using namespace std;
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
@@ -24,7 +28,15 @@ void processInput(GLFWwindow* window)
 }
 
 void initShaderProgram() {
-
+   std::string root= FileUtil::getRootPath();
+   std::string root2 = root;
+   root.append("src\\1\\1.vert");
+   root2.append("src\\1\\1.frag");
+   std::string vertfile = FileUtil::getFileString(root);
+   std::string fragfile = FileUtil::getFileString(root2);
+   printf("%s\n", vertfile.c_str());
+   printf("%s\n", fragfile.c_str());
+   new GLProgram(vertfile, fragfile);
 }
 
 void render() {
@@ -57,14 +69,6 @@ int main() {
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
     initShaderProgram();
-
-    Assimp::Importer importer;
-    const aiScene* scene = importer.ReadFile("resources/objects/backpack/backpack.obj", aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
-    if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
-    {
-        std::cout << "ERROR::ASSIMP::" << importer.GetErrorString() << std::endl;
-        return -1;
-    }
 
     while (!glfwWindowShouldClose(window))
     {

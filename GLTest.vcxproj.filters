@@ -16,6 +16,12 @@
     <Filter Include="源文件\src">
       <UniqueIdentifier>{a41b0431-d21f-4132-b022-d0cb1b730038}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\src\base">
+      <UniqueIdentifier>{476ac659-4133-42f8-9baf-64a305d87e07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\src\1">
+      <UniqueIdentifier>{9542175f-c54b-4051-bbbf-796b7a040706}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="glad.c">
@@ -24,5 +30,16 @@
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\base\GLProgram.cpp">
+      <Filter>源文件\src\base</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\base\GLProgram.h">
+      <Filter>源文件\src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\FileUtil.h">
+      <Filter>源文件\src\base</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
