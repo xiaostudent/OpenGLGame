@@ -3,6 +3,8 @@
 #define BASE_GLPROGRAM_H
 
 #include <xstring>
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 
 using namespace std;
 
@@ -10,8 +12,15 @@ class GLProgram
 {
 public:
 	GLProgram(string,string);
+	GLProgram();
 	~GLProgram();
 	bool useProgram();
+	virtual bool init() { return true; }; //³õÊ¼»¯»º´æÇø
+	virtual void render() {};
+
+	unsigned int getAttribLocation(string);
+
+	void getError();
 private:
 	unsigned int createShader(string&,int);
 	unsigned int createProgam();
@@ -20,6 +29,11 @@ private:
 	unsigned int fragmentShader;
 	unsigned int vertexShader;
 	unsigned int shaderProgram;
+protected:
+	unsigned int VBO[5];
+	unsigned int VAO[5];
+	unsigned int EBO[5];
+	bool loadShaderString(string, string);
 };
 
 #endif

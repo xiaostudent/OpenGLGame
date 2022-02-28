@@ -33,6 +33,12 @@
     <ClCompile Include="src\base\GLProgram.cpp">
       <Filter>源文件\src\base</Filter>
     </ClCompile>
+    <ClCompile Include="src\1\ChapterProgram1.cpp">
+      <Filter>源文件\src\1</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\FileUtil.cpp">
+      <Filter>源文件\src\base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\base\GLProgram.h">
@@ -40,6 +46,9 @@
     </ClInclude>
     <ClInclude Include="src\base\FileUtil.h">
       <Filter>源文件\src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\1\ChapterProgram1.h">
+      <Filter>源文件\src\1</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

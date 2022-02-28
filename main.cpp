@@ -13,8 +13,10 @@
 #include "src/base/FileUtil.h"
 #include <windows.h>
 #include "src/base/GLProgram.h"
+#include "src/1/ChapterProgram1.h"
 
 using namespace std;
+GLProgram* program;
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
@@ -28,21 +30,15 @@ void processInput(GLFWwindow* window)
 }
 
 void initShaderProgram() {
-   std::string root= FileUtil::getRootPath();
-   std::string root2 = root;
-   root.append("src\\1\\1.vert");
-   root2.append("src\\1\\1.frag");
-   std::string vertfile = FileUtil::getFileString(root);
-   std::string fragfile = FileUtil::getFileString(root2);
-   printf("%s\n", vertfile.c_str());
-   printf("%s\n", fragfile.c_str());
-   new GLProgram(vertfile, fragfile);
+   program=(GLProgram*)new ChapterProgram1();
 }
 
 void render() {
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
-
+    if (program) {
+        program->render();
+    }
 }
 
 int main() {
@@ -77,7 +73,10 @@ int main() {
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
-
+    if (program) {
+        delete program;
+        program = NULL;
+    }
     glfwTerminate();
     return 0;
 }

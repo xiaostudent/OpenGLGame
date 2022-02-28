@@ -78,8 +78,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <LibraryPath>D:\project\OpenGLGame\GLTest\GLLib;$(LibraryPath)</LibraryPath>
-    <IncludePath>D:\project\OpenGLGame\GLTest\GLInclude;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)GLLib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)src;$(ProjectDir)GLInclude;$(ProjectDir)src\base;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -144,9 +144,12 @@
   <ItemGroup>
     <ClCompile Include="glad.c" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\1\ChapterProgram1.cpp" />
+    <ClCompile Include="src\base\FileUtil.cpp" />
     <ClCompile Include="src\base\GLProgram.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\1\ChapterProgram1.h" />
     <ClInclude Include="src\base\FileUtil.h" />
     <ClInclude Include="src\base\GLProgram.h" />
   </ItemGroup>
