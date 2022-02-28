@@ -14,6 +14,7 @@
 #include <windows.h>
 #include "src/base/GLProgram.h"
 #include "src/1/ChapterProgram1.h"
+#include "src/2/ChapterProgram2.h"
 
 using namespace std;
 GLProgram* program;
@@ -30,7 +31,7 @@ void processInput(GLFWwindow* window)
 }
 
 void initShaderProgram() {
-   program=(GLProgram*)new ChapterProgram1();
+   program=(GLProgram*)new ChapterProgram2();
 }
 
 void render() {
