@@ -60,4 +60,12 @@
       <Filter>源文件\src\2</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="src\2\2.vert">
+      <Filter>源文件\src\2</Filter>
+    </None>
+    <None Include="src\2\2.frag">
+      <Filter>源文件\src\2</Filter>
+    </None>
+  </ItemGroup>
 </Project>

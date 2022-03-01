@@ -19,6 +19,7 @@ public:
 	virtual void render() {};
 
 	unsigned int getAttribLocation(string);
+	unsigned int getUniformLocation(string);
 
 	void getError();
 private:
@@ -33,6 +34,7 @@ protected:
 	unsigned int VBO[5];
 	unsigned int VAO[5];
 	unsigned int EBO[5];
+	unsigned int texture[16];
 	bool loadShaderString(string, string);
 };
 

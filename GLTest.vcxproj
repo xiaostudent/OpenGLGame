@@ -155,6 +155,10 @@
     <ClInclude Include="src\base\FileUtil.h" />
     <ClInclude Include="src\base\GLProgram.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="src\2\2.frag" />
+    <None Include="src\2\2.vert" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

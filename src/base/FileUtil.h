@@ -8,7 +8,7 @@
 class FileUtil
 {
 public:
-	static std::string getFileString(std::string path);
+	static std::string getFileString(std::string path,bool withEnd=true);
     static std::string getRootPath();
 };
 

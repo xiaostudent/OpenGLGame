@@ -10,9 +10,9 @@ public:
 	ChapterProgram2();
 	virtual bool init() override;
 	virtual void render() override;
-	void loadPng();
+	unsigned char*  loadPng(string path,int& width, int& height, int& nrChannels);
 private:
-
+	unsigned int textureUnti;
 };
 
 #endif // !CHAPTERPROGRAM_2

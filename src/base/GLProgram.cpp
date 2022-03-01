@@ -13,6 +13,7 @@ GLProgram::GLProgram(string vertStr, string fragStr)
     memset(VAO, 0, sizeof(VAO));
     memset(VBO, 0, sizeof(VBO));
     memset(EBO, 0, sizeof(EBO));
+    memset(texture, 0, sizeof(texture));
 }
 
 GLProgram::GLProgram()
@@ -23,6 +24,7 @@ GLProgram::GLProgram()
     memset(VAO, 0, sizeof(VAO));
     memset(VBO, 0, sizeof(VBO));
     memset(EBO, 0, sizeof(EBO));
+    memset(texture, 0, sizeof(texture));
 }
 
 bool GLProgram::loadShaderString(string vertStr, string fragStr) {
@@ -66,6 +68,14 @@ GLProgram::~GLProgram()
             EBO[i] = 0;
         }
     }
+
+    for (size_t i = 0; i < 16; i++)
+    {
+        if (texture[i] > 0) {
+            glDeleteTextures(1, texture + i);
+            texture[i] = 0;
+        }
+    }
 }
 
 unsigned int GLProgram::createProgam() {
@@ -93,6 +103,7 @@ unsigned int GLProgram::createProgam() {
 unsigned int GLProgram::createShader(string& shaderSource,int shaderType) {
     int success;
     char infoLog[512];
+    memset(infoLog, '\0', 512);
     unsigned int shader = glCreateShader(shaderType);
     const char* source = shaderSource.c_str();
     glShaderSource(shader, 1, &source, NULL);
@@ -118,6 +129,14 @@ bool GLProgram::useProgram() {
 unsigned int GLProgram::getAttribLocation(string name) {
     if (shaderProgram) {
         return glGetAttribLocation(shaderProgram, name.c_str());
+    }
+    return -1;
+}
+
+unsigned int GLProgram::getUniformLocation(string name) {
+    if (shaderProgram) {
+        if(useProgram())  // don't forget to activate/use the shader before setting uniforms!
+        return glGetUniformLocation(shaderProgram, name.c_str());
     }
     return -1;
 }
