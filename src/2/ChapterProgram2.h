@@ -11,6 +11,7 @@ public:
 	virtual bool init() override;
 	virtual void render() override;
 	unsigned char*  loadPng(string path,int& width, int& height, int& nrChannels);
+	unsigned char* loadKTX(string path, int& width, int& height,unsigned int& size);
 private:
 	unsigned int textureUnti;
 };
