@@ -25,6 +25,9 @@
     <Filter Include="源文件\src\2">
       <UniqueIdentifier>{4d10f301-3c1c-4c91-8ea1-dee02d1b4076}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\src\3">
+      <UniqueIdentifier>{448ca962-f8ce-4b95-b4d1-9d986f56a134}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="glad.c">
@@ -45,6 +48,9 @@
     <ClCompile Include="src\2\ChapterProgram2.cpp">
       <Filter>源文件\src\2</Filter>
     </ClCompile>
+    <ClCompile Include="src\3\ChapterProgram3.cpp">
+      <Filter>源文件\src\3</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\base\GLProgram.h">
@@ -59,6 +65,12 @@
     <ClInclude Include="src\2\ChapterProgram2.h">
       <Filter>源文件\src\2</Filter>
     </ClInclude>
+    <ClInclude Include="src\3\ChapterProgram3.h">
+      <Filter>源文件\src\3</Filter>
+    </ClInclude>
+    <ClInclude Include="src\main.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\2\2.vert">
@@ -66,6 +78,12 @@
     </None>
     <None Include="src\2\2.frag">
       <Filter>源文件\src\2</Filter>
+    </None>
+    <None Include="src\3\3.vert">
+      <Filter>源文件\src\3</Filter>
+    </None>
+    <None Include="src\3\3.frag">
+      <Filter>源文件\src\3</Filter>
     </None>
   </ItemGroup>
 </Project>

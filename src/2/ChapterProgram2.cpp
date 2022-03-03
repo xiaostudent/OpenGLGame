@@ -1,7 +1,4 @@
 #include "ChapterProgram2.h"
-#define STB_IMAGE_IMPLEMENTATION
-#include <stb_image.h>
-#define GL_COMPRESSED_RGBA8_ETC2_EAC      0x9278
 
 ChapterProgram2::ChapterProgram2() :GLProgram()
 {

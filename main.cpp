@@ -1,8 +1,8 @@
+#include "src/main.h"
 #include <stdio.h>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
-#include "GLinclude/stb_image.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -12,12 +12,17 @@
 #include <iostream>
 #include "src/base/FileUtil.h"
 #include <windows.h>
-#include "src/base/GLProgram.h"
 #include "src/1/ChapterProgram1.h"
 #include "src/2/ChapterProgram2.h"
+#include "src/3/ChapterProgram3.h"
+
+#define STB_IMAGE_IMPLEMENTATION
+#include <stb_image.h>
 
 using namespace std;
 GLProgram* program;
+
+
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
@@ -31,12 +36,12 @@ void processInput(GLFWwindow* window)
 }
 
 void initShaderProgram() {
-   program=(GLProgram*)new ChapterProgram2();
+   program=(GLProgram*)new ChapterProgram3();
 }
 
 void render() {
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT  | GL_DEPTH_BUFFER_BIT );
     if (program) {
         program->render();
     }
@@ -48,7 +53,7 @@ int main() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    GLFWwindow* window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
     if (window == NULL)
     {
         std::cout << "Failed to create GLFW window" << std::endl;

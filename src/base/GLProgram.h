@@ -5,6 +5,8 @@
 #include <xstring>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <stb_image.h>
+#define GL_COMPRESSED_RGBA8_ETC2_EAC      0x9278
 
 using namespace std;
 
@@ -36,6 +38,7 @@ protected:
 	unsigned int EBO[5];
 	unsigned int texture[16];
 	bool loadShaderString(string, string);
+	unsigned int vertextCount = 0;
 };
 
 #endif

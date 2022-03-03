@@ -146,18 +146,23 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\1\ChapterProgram1.cpp" />
     <ClCompile Include="src\2\ChapterProgram2.cpp" />
+    <ClCompile Include="src\3\ChapterProgram3.cpp" />
     <ClCompile Include="src\base\FileUtil.cpp" />
     <ClCompile Include="src\base\GLProgram.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\1\ChapterProgram1.h" />
     <ClInclude Include="src\2\ChapterProgram2.h" />
+    <ClInclude Include="src\3\ChapterProgram3.h" />
     <ClInclude Include="src\base\FileUtil.h" />
     <ClInclude Include="src\base\GLProgram.h" />
+    <ClInclude Include="src\main.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\2\2.frag" />
     <None Include="src\2\2.vert" />
+    <None Include="src\3\3.frag" />
+    <None Include="src\3\3.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
