@@ -147,6 +147,7 @@
     <ClCompile Include="src\1\ChapterProgram1.cpp" />
     <ClCompile Include="src\2\ChapterProgram2.cpp" />
     <ClCompile Include="src\3\ChapterProgram3.cpp" />
+    <ClCompile Include="src\base\Camera.cpp" />
     <ClCompile Include="src\base\FileUtil.cpp" />
     <ClCompile Include="src\base\GLProgram.cpp" />
   </ItemGroup>
@@ -154,6 +155,7 @@
     <ClInclude Include="src\1\ChapterProgram1.h" />
     <ClInclude Include="src\2\ChapterProgram2.h" />
     <ClInclude Include="src\3\ChapterProgram3.h" />
+    <ClInclude Include="src\base\Camera.h" />
     <ClInclude Include="src\base\FileUtil.h" />
     <ClInclude Include="src\base\GLProgram.h" />
     <ClInclude Include="src\main.h" />

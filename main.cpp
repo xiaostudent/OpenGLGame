@@ -15,6 +15,7 @@
 #include "src/1/ChapterProgram1.h"
 #include "src/2/ChapterProgram2.h"
 #include "src/3/ChapterProgram3.h"
+#include "src/base/Camera.h"
 
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
@@ -22,7 +23,17 @@
 using namespace std;
 GLProgram* program;
 
+float currentFrame = 0.0f;
 
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+{
+    if (program) program->scroll_callback(window, xoffset, yoffset);
+}
+
+void mouse_callback(GLFWwindow* window, double xposIn, double yposIn)
+{
+    if (program) program->mouse_callback( window,xposIn,yposIn);
+}
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
@@ -33,6 +44,7 @@ void processInput(GLFWwindow* window)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
+    if (program) program->processInput(window);
 }
 
 void initShaderProgram() {
@@ -69,11 +81,14 @@ int main() {
     }
 
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-
+    glfwSetCursorPosCallback(window, mouse_callback);
+    glfwSetScrollCallback(window, scroll_callback);
     initShaderProgram();
 
     while (!glfwWindowShouldClose(window))
     {
+        currentFrame = static_cast<float>(glfwGetTime());
+        if (program) program->update(currentFrame);
         processInput(window);
         render();
         glfwSwapBuffers(window);

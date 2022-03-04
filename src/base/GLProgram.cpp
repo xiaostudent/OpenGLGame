@@ -4,6 +4,7 @@
 
 GLProgram::GLProgram(string vertStr, string fragStr)
 {
+    _camera = 0;
     shaderProgram = 0;
     vertexShader = 0;
     fragmentShader = 0;
@@ -18,6 +19,7 @@ GLProgram::GLProgram(string vertStr, string fragStr)
 
 GLProgram::GLProgram()
 {
+    _camera = 0;
     shaderProgram = 0;
     vertexShader = 0;
     fragmentShader = 0;
@@ -76,6 +78,12 @@ GLProgram::~GLProgram()
             texture[i] = 0;
         }
     }
+
+    if (_camera) {
+        delete  _camera;
+        _camera = 0;
+    }
+
 }
 
 unsigned int GLProgram::createProgam() {
@@ -147,5 +155,29 @@ void GLProgram::getError() {
     if (__error) {
         printf("OpenGL error 0x%04X in %s %s %d\n", __error, __FILE__, __FUNCTION__, __LINE__);
     } 
+}
+
+void GLProgram::processInput(GLFWwindow* window) {
+    if (_camera) {
+        _camera->processInput(window);
+    }
+}
+
+void GLProgram::update(float currFrame) {
+    if (_camera) {
+        _camera->setCurrentFrame(currFrame);
+    }
+}
+
+void GLProgram::mouse_callback(GLFWwindow* window, double xposIn, double yposIn) {
+    if (_camera) {
+        _camera->mouse_callback(window,xposIn,yposIn);
+    }
+}
+
+void GLProgram::scroll_callback(GLFWwindow* window, double xoffset, double yoffset) {
+    if (_camera){
+        _camera->scroll_callback(window, xoffset, yoffset);
+    }
 }
 

@@ -7,6 +7,7 @@
 #include <GLFW/glfw3.h>
 #include <stb_image.h>
 #define GL_COMPRESSED_RGBA8_ETC2_EAC      0x9278
+#include "Camera.h"
 
 using namespace std;
 
@@ -24,6 +25,12 @@ public:
 	unsigned int getUniformLocation(string);
 
 	void getError();
+
+	Camera* getCamera() { return _camera; }
+	void processInput(GLFWwindow* window);
+	void update(float currFrame);
+	void mouse_callback(GLFWwindow* window, double xposIn, double yposIn);
+	void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 private:
 	unsigned int createShader(string&,int);
 	unsigned int createProgam();
@@ -39,6 +46,7 @@ protected:
 	unsigned int texture[16];
 	bool loadShaderString(string, string);
 	unsigned int vertextCount = 0;
+	Camera* _camera;
 };
 
 #endif

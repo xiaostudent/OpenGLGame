@@ -17,6 +17,7 @@ ChapterProgram3::ChapterProgram3() :GLProgram()
 
 
 bool ChapterProgram3::init() {
+    _camera = new Camera();
     float vertices[] = {
         -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
          0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
@@ -62,7 +63,6 @@ bool ChapterProgram3::init() {
     };
 
     vertextCount = sizeof(vertices) / (5 * sizeof(float));
-    printf("%d\n", vertextCount);
 
     glGenVertexArrays(1, VAO);
 
@@ -176,22 +176,16 @@ bool ChapterProgram3::init() {
     textureUnti = getUniformLocation("texture1");
     glUniform1i(textureUnti, 4);
 
-    setPerspective();
+    u_projection = getUniformLocation("pv");
 
     return true;
 }
 
 void ChapterProgram3::setPerspective() {  //…Ë÷√pvæÿ’Û
-    //projection   
-    glm::mat4 projection = glm::mat4(1.0f);
-    projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-    //view
-    glm::mat4 view = glm::mat4(1.0f);
-    view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
-
-    glm::mat4 pv = projection * view;
-    unsigned int  u_projection = getUniformLocation("pv");
-    glUniformMatrix4fv(u_projection, 1, GL_FALSE, &pv[0][0]);
+    if (_camera) {
+        glm::mat4 pv = _camera->GetProjectionViewMatrix();
+        glUniformMatrix4fv(u_projection, 1, GL_FALSE, &pv[0][0]);
+    }
 }
 
 
@@ -199,6 +193,7 @@ void ChapterProgram3::setPerspective() {  //…Ë÷√pvæÿ’Û
 void ChapterProgram3::render() {
     if (useProgram()) {
         getError();
+        setPerspective();
         glBindVertexArray(VAO[0]);
         glActiveTexture(GL_TEXTURE0 + 4);
         glBindTexture(GL_TEXTURE_2D, texture[1]);

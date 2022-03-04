@@ -17,6 +17,7 @@ public:
 	void setPerspective();
 private:
 	unsigned int textureUnti;
+	unsigned int  u_projection;
 };
 
 #endif // !CHAPTERPROGRAM_3
